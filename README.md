@@ -22,6 +22,8 @@ The next step is to train the data. This includes:
 
 ### Technologies Used
 
+- **TamperMonkey**: A browser extension used to inject & execute JS scripts on websites.
+- **Javascript**: Language used to write userscripts for both scraping / displaying predictions on LinkedIn.
 - **Python**: The primary programming language for data analysis and model training.
 - **Pandas**: For data manipulation and cleaning.
 - **Scikit-Learn**: For implementing machine learning models and evaluating their performance.
