@@ -4,7 +4,7 @@
 
 This project is all about understanding LinkedIn connections and predicting who might connect with you in the future. I started by gathering data from LinkedIn profiles, and now I'm moving on to the next steps of analyzing this data and predicting future connection behaviors.
 
-## Current Progress
+## Current Progress <img src="https://cdn.pixabay.com/animation/2022/12/27/19/44/19-44-01-183_512.gif" width="30px"/>
 
 ### Part 1: Data Scraping
 
