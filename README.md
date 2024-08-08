@@ -10,6 +10,8 @@ This project is all about understanding LinkedIn connections and predicting who 
 
 The first part of the project is finished. I’ve successfully created a scraper that collects data from LinkedIn connections and saves it in a CSV file for further analysis, feel free to check it out. 🤞
 
+<img src="https://github.com/gv3Dev/LinkedIn-Connections-Analysis/blob/main/scraper.png?raw=true"/>
+
 ## Next Steps
 
 ### 1. Data Training
