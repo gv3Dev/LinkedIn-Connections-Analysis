@@ -8,9 +8,10 @@ This project is all about understanding LinkedIn connections and predicting who 
 
 ### Part 1: Data Scraping
 
-The first part of the project is finished. I’ve successfully created a scraper that collects data from LinkedIn connections and saves it in a CSV file for further analysis, feel free to check it out. 🤞
+The first part of the project is done. I’ve built a scraper that collects LinkedIn connection data and saves it as a CSV file for later analysis. I’ve also set up a way to get the specific user’s profile data as a JSON file. Feel free to check it out. 🤞
 
-<img src="https://github.com/gv3Dev/LinkedIn-Connections-Analysis/blob/main/scraper.png?raw=true"/>
+
+<img src="https://github.com/gv3Dev/LinkedIn-Connections-Analysis/blob/main/scraper.png?raw=true" width="48%" /> <img src="https://github.com/gv3Dev/LinkedIn-Connections-Analysis/blob/main/userExtraction.png?raw=true" width="48%"/>
 
 ## Next Steps
 
