@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         LinkedIn Connections Scraper
 // @namespace    http://tampermonkey.net/
-// @version      2024-08-08
-// @description  Scrapes connections for analysis and predictions
+// @version      2024-08-10
+// @description  Scrapes connections for analysis and predictions, exports as JSON & CSV
 // @author       GV3Dev
 // @match        https://www.linkedin.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=linkedin.com
@@ -100,9 +100,13 @@ if(location.href=="https://www.linkedin.com/mynetwork/invite-connect/connections
         }
     };
 
-    const handleExportData = (btn)=>{
+    const handleExportData = (btn, type)=>{
         if(scrapedData.length>0){
-            downloadCSV(JSONtoCSV(scrapedData), "LinkedIn-Connections.csv");
+            if(type=="CSV"){
+                downloadCSV(JSONtoCSV(scrapedData), "LinkedIn-Connections.csv");
+            }else if(type=="JSON"){
+                downloadJSON(scrapedData, "LinkedIn-Connections.json" );
+            }
         }else{
             alert("Please scrape some of your connections before trying to export 🤔");
         }
@@ -114,40 +118,44 @@ if(location.href=="https://www.linkedin.com/mynetwork/invite-connect/connections
         scrapeControls.className = "scrape-controls";
         scrapeControls.innerHTML = `
         <button id="scrape-state-switch" class="scraper-button">Start Scraping</button>
+        <button id="scrape-export-json" class="scraper-button">Export as JSON</button>
         <button id="scrape-export" class="scraper-button">Export as CSV</button>
     `;
         appendBox.append(scrapeControls);
         const scrapeStateBtn = scrapeControls.querySelector("#scrape-state-switch");
+        const scrapeExportJSON = scrapeControls.querySelector("#scrape-export-json");
         const scrapeExport = scrapeControls.querySelector("#scrape-export");
 
         scrapeStateBtn.addEventListener("click", () => { handleScrapeState(scrapeStateBtn); });
-        scrapeExport.addEventListener("click", () => { handleExportData(scrapeExport) });
+        scrapeExport.addEventListener("click", () => { handleExportData(scrapeExport, "CSV") });
+        scrapeExportJSON.addEventListener("click", () => {handleExportData(scrapeExportJSON, "JSON")});
 
         const style = document.createElement("style");
         style.textContent = `
         .scrape-controls {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 300px;
             position: fixed;
-            height: 30px;
+            height: 200px;
             margin: 5px;
             padding: 5px;
             padding-top: 10px;
             padding-bottom: 10px;
         }
         .scraper-button {
-            flex: 0.5;
             padding: 5px 10px;
             background: white;
             border:1px solid black;
             color: black;
+            height: 30px;
+            width: 200px;
+            margin-top: 10px;
             border-radius: 5px;
             outline: none;
             cursor: pointer;
-            margin-left: 5px;
         }
         #scrape-state-switch {
            background-color: springgreen;
@@ -163,7 +171,6 @@ if(location.href=="https://www.linkedin.com/mynetwork/invite-connect/connections
 
 
 // Helper Functions
-
 
 function downloadCSV(csv, filename) {
     const csvFile = new Blob([csv], { type: 'text/csv' });
